@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<link>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.js" type="text/javascript"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="app.js" charset="UFT-8"></script>
+    <link rel="stylesheet" href="style.css"></link>
+    <title>Basic Tetris</title>
+</head>
+<body>
+    <div class="pageColumn">
+        <div class="UI">
+            <div class="uiColumn">
+                <button id="start-button">Start!</button>
+
+                <br> <br>
+                <input type="checkbox" id="autoSpawnCheckbox" name="autoSpawnCheckbox" value="false">
+                <label for="autoSpawnCheckbox">Spawn Pieces on a Time Interval?</label>
+
+                <p>Spawn Rate: <span id="spawnRateText">50</span>%</p>
+                <input type="range" min="1" max="100" value="50" class="slider" id="spawnRateSlider">
+                <br>
+
+                <p>Fall Speed: <span id="fallSpeedText">50</span>%</p>
+                <input type="range" min="1" max="100" value="50" class="slider" id="pieceSpeedSlider">
+
+                <p>Gravity: <span id="gravityText">Down</span></p>
+                <div style="text-align:center;">
+                    <button onmousedown="changeGravity(value)" value="8">Up</button>
+                    <br> <br>
+                    <button onmousedown="changeGravity(value)" value="4">Left</button>
+                    <button onmousedown="changeGravity(value)" value="6">Right</button>
+                    <br> <br>
+                    <button onmousedown="changeGravity(value)" value="2">Down</button>
+                </div>
+                
+                <br>
+                <input type="checkbox" id="gameOfLifeCheckbox" name="gameOfLifeCheckbox" value="false">
+                <label for="gameOfLifeCheckbox">Pieces Play the Game of Life?</label>
+
+                <br> <br>
+                <h2>Controls:</h2>
+                <p>WASD, ArrowKeys or NumPad all work for piece movement.</p>
+                <p>Spacebar rotates pieces 90 degrees.</p>
+                <p>Shift keys will drop pieces 3x fast.</p>
+
+            </div>
+            <div class="uiColumn">
+                <h3>Score: <span id="score">0</span></h3>
+                <br>
+                <h3>By Color: <span id="scoreByColor"></span></h3>
+            </div>
+            <div id="uiColumn">
+                <div id="nextUpMiniGrid"></div>
+            </div>
+        </div>
+
+        <br> <br> <br> <br>
+        <div id="gridContainer"></div>
+    </div>
+    <div class="pageColumn">
+        <div id="plotsGrid">
+            <div id="piecesByColorPlot"></div>
+            <div id="cubiesByColorPlot"></div>
+            <div id="piecesByTypePlot"></div>
+            <div id="historyByColorPlot"></div>
+            <div id="totalByColorPlot"></div>
+            <div id="historyOfScoringCubies"></div>
+            <div id="totalScoringCubies"></div>
+        </div>
+    </div>
+</body>
+</html>
